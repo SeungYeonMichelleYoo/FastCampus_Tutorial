@@ -27,6 +27,7 @@
 		545A66BE29878C4E00895BA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		545A66C029878C4E00895BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		545A66C629878D8900895BA6 /* Observable.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observable.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		54E298502987F90300F7FA30 /* Traits.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Traits.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		72B98DD28A5CD3BF7CCF041A /* Pods-ObservableLearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservableLearn.release.xcconfig"; path = "Target Support Files/Pods-ObservableLearn/Pods-ObservableLearn.release.xcconfig"; sourceTree = "<group>"; };
 		A8F2C64AC3874413E4E10AC9 /* Pods_ObservableLearn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObservableLearn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -64,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				545A66C629878D8900895BA6 /* Observable.playground */,
+				54E298502987F90300F7FA30 /* Traits.playground */,
 				545A66B129878C4D00895BA6 /* ObservableLearn */,
 				545A66B029878C4D00895BA6 /* Products */,
 				262BF7F93FF224FA6D3F3883 /* Pods */,
