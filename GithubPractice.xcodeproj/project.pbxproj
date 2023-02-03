@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545E5146298BB05B00213086 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545E5145298BB05B00213086 /* Repository.swift */; };
 		5465F163298B88C3002BBDE6 /* RepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465F162298B88C3002BBDE6 /* RepositoryListViewController.swift */; };
 		5465F165298B8959002BBDE6 /* RepositoryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465F164298B8958002BBDE6 /* RepositoryListCell.swift */; };
 		5465F168298B89B5002BBDE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5465F167298B89B5002BBDE6 /* SnapKit */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		545E5145298BB05B00213086 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		5465F162298B88C3002BBDE6 /* RepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
 		5465F164298B8958002BBDE6 /* RepositoryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListCell.swift; sourceTree = "<group>"; };
 		54C74A9F298776B5002777F3 /* GithubPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,7 @@
 				54C74AB0298776B6002777F3 /* Info.plist */,
 				5465F162298B88C3002BBDE6 /* RepositoryListViewController.swift */,
 				5465F164298B8958002BBDE6 /* RepositoryListCell.swift */,
+				545E5145298BB05B00213086 /* Repository.swift */,
 			);
 			path = GithubPractice;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				54C74AA3298776B5002777F3 /* AppDelegate.swift in Sources */,
 				54C74AA5298776B5002777F3 /* SceneDelegate.swift in Sources */,
+				545E5146298BB05B00213086 /* Repository.swift in Sources */,
 				5465F163298B88C3002BBDE6 /* RepositoryListViewController.swift in Sources */,
 				5465F165298B8959002BBDE6 /* RepositoryListCell.swift in Sources */,
 			);
