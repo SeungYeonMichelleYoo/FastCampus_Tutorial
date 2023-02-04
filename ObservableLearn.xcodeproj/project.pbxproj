@@ -20,6 +20,7 @@
 		0CD17DDC75EBA29702003211 /* Pods-ObservableLearn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservableLearn.debug.xcconfig"; path = "Target Support Files/Pods-ObservableLearn/Pods-ObservableLearn.debug.xcconfig"; sourceTree = "<group>"; };
 		542DD863298B4BC4009AF896 /* FilteringOperator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FilteringOperator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		542DD865298B58AB009AF896 /* TransformingOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TransformingOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		542E9955298DFF1500EF62F8 /* TimeBasedOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TimeBasedOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		545A66AF29878C4D00895BA6 /* ObservableLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservableLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545A66B229878C4D00895BA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545A66B429878C4D00895BA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 		545A66C629878D8900895BA6 /* Observable.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observable.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5464F1922988AB0400F7DCAA /* SubjectPractice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SubjectPractice.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5464F1942988AB5000F7DCAA /* Traits.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Traits.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		54F3380C298D479500CA6C9D /* CombiningOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = CombiningOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		72B98DD28A5CD3BF7CCF041A /* Pods-ObservableLearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservableLearn.release.xcconfig"; path = "Target Support Files/Pods-ObservableLearn/Pods-ObservableLearn.release.xcconfig"; sourceTree = "<group>"; };
 		A8F2C64AC3874413E4E10AC9 /* Pods_ObservableLearn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObservableLearn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,6 +69,8 @@
 		545A66A629878C4D00895BA6 = {
 			isa = PBXGroup;
 			children = (
+				542E9955298DFF1500EF62F8 /* TimeBasedOperators.playground */,
+				54F3380C298D479500CA6C9D /* CombiningOperators.playground */,
 				545A66C629878D8900895BA6 /* Observable.playground */,
 				5464F1942988AB5000F7DCAA /* Traits.playground */,
 				5464F1922988AB0400F7DCAA /* SubjectPractice.playground */,
