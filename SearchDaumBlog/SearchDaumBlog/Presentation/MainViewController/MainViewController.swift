@@ -32,12 +32,97 @@ class MainViewController: UIViewController {
     }
     
     private func bind() {
+        let blogResult = searchBar.shouldLoadResult
+            .flatMapLatest { query in
+                SearchBlogNetwork().searchBlog(query: query)
+            }
+            .share()
+        
+        let blogValue = blogResult
+            .compactMap { data -> DKBlog? in
+                guard case .success(let value) = data else {
+                    return nil
+                }
+                
+                return value
+            }
+        
+        let blogError = blogResult
+            .compactMap { data -> String? in
+                guard case .failure(let error) = data else {
+                    return nil
+                }
+                return error.localizedDescription
+            }
+        
+        //네트워크를 통해 가져온 값을 cellData로 변환
+        let cellData = blogValue
+            .map { blog -> [BlogListCellData] in
+                return blog.documents
+                    .map { doc in
+                        let thumbnailURL = URL(string: doc.thumbnail ?? "") //string -> URL
+                        return BlogListCellData(
+                            thumbnailURL: thumbnailURL,
+                            name: doc.name,
+                            title: doc.title,
+                            datetime: doc.datetime
+                        )
+                    }
+            }
+        
+        
+        //FilterView를 선택했을 때 나오는 alertsheet를 선택했을 때 type
+        let sortedType = alertActionTapped
+            .filter {
+                switch $0 {
+                case .title, .datetime:
+                    return true
+                default:
+                    return false
+                }
+            }
+            .startWith(.title) //아무것도 건드리지 않았다면 title 기준으로 한다
+        
+        
+        //MainViewController -> ListView
+        Observable
+            .combineLatest(
+                sortedType,
+                cellData //titled을 했다가 datetime 클릭했다가 바뀔 수 있음. 가장 최신의 타입을 받아서 celldata를 조합한 다음에 아래처럼 정렬한 담에 내보내준다.
+            ) { type, data -> [BlogListCellData] in
+                switch type {
+                case .title:
+                    return data.sorted { $0.title ?? "" < $1.title ?? "" }
+                case .datetime:
+                    return data.sorted { $0.datetime ?? Date() > $1.datetime ?? Date() }
+                default:
+                    return data
+                }
+            }
+            .bind(to: listView.cellData)
+            .disposed(by: disposeBag)
+        
+        
         let alertSheetForSorting = listView.headerView.sortButtonTapped
             .map { _ -> Alert in
                 return (title: nil, message: nil, actions: [.title, .datetime, .cancel], style: .actionSheet)
             }
         
-        alertSheetForSorting
+        let alertForErrorMessage = blogError
+            .map { message -> Alert in
+                return (
+                    title: "앗!",
+                    message: "예상치 못한 오류가 발생했습니다. 잠시 후 다시 시도해주세요. \(message)",
+                    actions: [.confirm],
+                    style: .alert
+                )
+            }
+        
+        Observable
+            .merge(
+                alertSheetForSorting,
+                alertForErrorMessage
+                )
             .asSignal(onErrorSignalWith: .empty())
             .flatMapLatest { alert -> Signal<AlertAction> in
                 let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: alert.style)
@@ -45,6 +130,7 @@ class MainViewController: UIViewController {
             }
             .emit(to: alertActionTapped)
             .disposed(by: disposeBag)
+        
     }
     
     private func attribute() {
@@ -69,7 +155,7 @@ class MainViewController: UIViewController {
 
 //Alert
 extension MainViewController {
-    typealias Alert = (title: String?, message: String?, actions: [UIAlertAction], style: UIAlertController.Style)
+    typealias Alert = (title: String?, message: String?, actions: [AlertAction], style: UIAlertController.Style)
     
     enum AlertAction: AlertActionConvertible {
         case title, datetime, cancel

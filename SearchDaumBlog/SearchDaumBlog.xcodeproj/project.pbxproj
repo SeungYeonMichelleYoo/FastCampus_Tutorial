@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543AE03D2990BB10000B6667 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543AE03C2990BB10000B6667 /* APIKey.swift */; };
+		543AE0402990BB52000B6667 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 543AE03F2990BB52000B6667 /* .gitignore */; };
 		543F711F298FCF340045E30D /* AlertActionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F711E298FCF340045E30D /* AlertActionConvertible.swift */; };
+		545AF66329908853000981CA /* DKBlog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AF66229908853000981CA /* DKBlog.swift */; };
+		545AF66529909D59000981CA /* SearchBlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AF66429909D59000981CA /* SearchBlogAPI.swift */; };
+		545AF66829909E58000981CA /* SearchBlogNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545AF66729909E58000981CA /* SearchBlogNetwork.swift */; };
 		54B5F1A0298F840600FD4022 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5F19F298F840600FD4022 /* AppDelegate.swift */; };
 		54B5F1A2298F840600FD4022 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5F1A1298F840600FD4022 /* SceneDelegate.swift */; };
 		54B5F1A9298F840700FD4022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B5F1A8298F840700FD4022 /* Assets.xcassets */; };
@@ -26,7 +31,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		543AE03C2990BB10000B6667 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		543AE03F2990BB52000B6667 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		543F711E298FCF340045E30D /* AlertActionConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionConvertible.swift; sourceTree = "<group>"; };
+		545AF66229908853000981CA /* DKBlog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKBlog.swift; sourceTree = "<group>"; };
+		545AF66429909D59000981CA /* SearchBlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBlogAPI.swift; sourceTree = "<group>"; };
+		545AF66729909E58000981CA /* SearchBlogNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBlogNetwork.swift; sourceTree = "<group>"; };
 		54B5F19C298F840600FD4022 /* SearchDaumBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchDaumBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B5F19F298F840600FD4022 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B5F1A1298F840600FD4022 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		543AE03E2990BB16000B6667 /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				543AE03C2990BB10000B6667 /* APIKey.swift */,
+			);
+			path = Key;
+			sourceTree = "<group>";
+		};
 		543F7119298FCBED0045E30D /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +119,15 @@
 			path = SubComponents;
 			sourceTree = "<group>";
 		};
+		545AF66629909D71000981CA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				545AF66429909D59000981CA /* SearchBlogAPI.swift */,
+				545AF66729909E58000981CA /* SearchBlogNetwork.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		54B5F193298F840600FD4022 = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +147,11 @@
 		54B5F19E298F840600FD4022 /* SearchDaumBlog */ = {
 			isa = PBXGroup;
 			children = (
+				543AE03F2990BB52000B6667 /* .gitignore */,
+				543AE03E2990BB16000B6667 /* Key */,
 				54B5F19F298F840600FD4022 /* AppDelegate.swift */,
 				54B5F1A1298F840600FD4022 /* SceneDelegate.swift */,
+				545AF66629909D71000981CA /* Network */,
 				54B5F1CE298F910500FD4022 /* Entities */,
 				54B5F1CD298F90F000FD4022 /* Presentation */,
 				54B5F1A8298F840700FD4022 /* Assets.xcassets */,
@@ -144,6 +174,7 @@
 			children = (
 				54B5F1CA298F909F00FD4022 /* BlogListCellData.swift */,
 				543F711E298FCF340045E30D /* AlertActionConvertible.swift */,
+				545AF66229908853000981CA /* DKBlog.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -219,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B5F1AC298F840700FD4022 /* LaunchScreen.storyboard in Resources */,
+				543AE0402990BB52000B6667 /* .gitignore in Resources */,
 				54B5F1A9298F840700FD4022 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,12 +264,16 @@
 			files = (
 				54B5F1C1298F84C200FD4022 /* MainViewController.swift in Sources */,
 				54B5F1C9298F909400FD4022 /* BlogListCell.swift in Sources */,
+				545AF66329908853000981CA /* DKBlog.swift in Sources */,
 				54B5F1C7298F907600FD4022 /* BlogList.swift in Sources */,
+				545AF66529909D59000981CA /* SearchBlogAPI.swift in Sources */,
 				54B5F1CB298F909F00FD4022 /* BlogListCellData.swift in Sources */,
 				54B5F1C3298F85EB00FD4022 /* SearchBar.swift in Sources */,
 				54B5F1A0298F840600FD4022 /* AppDelegate.swift in Sources */,
 				54B5F1C5298F8E8600FD4022 /* FilterView.swift in Sources */,
 				54B5F1A2298F840600FD4022 /* SceneDelegate.swift in Sources */,
+				545AF66829909E58000981CA /* SearchBlogNetwork.swift in Sources */,
+				543AE03D2990BB10000B6667 /* APIKey.swift in Sources */,
 				543F711F298FCF340045E30D /* AlertActionConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
