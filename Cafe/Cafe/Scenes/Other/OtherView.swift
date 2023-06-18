@@ -10,7 +10,7 @@ import SwiftUI
 struct OtherView: View {
 //    init() {
 //        UITableView.appearance().backgroundColor = .systemBackground
-//    }
+//    } //적용이 안됨
     
     var body: some View {
         NavigationView {
@@ -28,7 +28,7 @@ struct OtherView: View {
             .navigationTitle("Other")
             .toolbar {
                 NavigationLink(
-                    destination: Text("Destination"),
+                    destination: SettingView(),
                     label: {
                         Image(systemName: "gear")
                     })
