@@ -9,24 +9,37 @@ import UIKit
 import SnapKit
 
 final class TranslateViewController: UIViewController {
+    //MARK: - 버튼 source(번역 전), target(번역되는 언어)
+    enum `Type` {
+        case source
+        case target
+    }
+    
+    private var sourceLanguage: Language = .ko
+    private var targetLanguage: Language = .en
+        
     private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("한국어", for: .normal)
+        button.setTitle(sourceLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 9.0
+        
+        button.addTarget(self, action: #selector(didTapSourceLanguageButton), for: .touchUpInside)
         
         return button
     }()
     
     private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("영어", for: .normal)
+        button.setTitle(targetLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 9.0
+        
+        button.addTarget(self, action: #selector(didTapTargetLanguageButton), for: .touchUpInside)
         
         return button
     }()
@@ -73,6 +86,10 @@ final class TranslateViewController: UIViewController {
     private lazy var sourceLabelBaseButton: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBackground
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSourceLabelBaseButton))
+        view.addGestureRecognizer(tapGesture)
+        
         return view
     }()
     
@@ -91,6 +108,16 @@ final class TranslateViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         
         setupViews()
+    }
+}
+
+//SourceTextVC에서 무언가를 입력하고 엔터쳤을 때 여기 화면 텍스트입력창에 검정 글씨로 변화하게끔 한다
+extension TranslateViewController: SourceTextViewControllerDelegate {
+    func didEnterText(_ sourceText: String) {
+        if sourceText.isEmpty { return } //만약 사용자가 아무것도 안치고 엔터 누른 경우 아무것도 안하고 끝나야 함(텍스트 입력이 바뀌면 안됨)
+        
+        sourceLabel.text = sourceText
+        sourceLabel.textColor = .label
     }
 }
 
@@ -153,5 +180,39 @@ private extension TranslateViewController {
             $0.trailing.equalTo(sourceLabelBaseButton.snp.trailing).inset(24.0)
             $0.top.equalTo(sourceLabelBaseButton.snp.top).inset(24.0)
         }
+    }
+    
+    @objc func didTapSourceLabelBaseButton() {
+        let viewController = SourceTextViewController(delegate: self) //didEnterText가 되었을 때 이걸 받아들일 준비가 된거
+        present(viewController, animated: true)
+    }
+    
+    @objc func didTapSourceLanguageButton() {
+        didTapLanguageButton(type: .source)
+    }
+    
+    @objc func didTapTargetLanguageButton() {
+        didTapLanguageButton(type: .target)
+    }
+
+    //아래에 한방에 @objc로 두개의 버튼에 연결시킬 수 없는 이유: enum이 Swift시절부터 나왔기 때문(objc 시절엔 없었다)
+    func didTapLanguageButton(type: Type) { //type을 쓰는 이유? (왼쪽, 오른쪽 버튼 모두에 같은 함수를 연결시켰는데, 어디에서 부른건지 알려고 parameter에 넣는다)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        Language.allCases.forEach { language in
+            let action = UIAlertAction(title: language.title, style: .default) { [weak self] _ in
+                switch type {
+                case .source:
+                    self?.sourceLanguage = language
+                    self?.sourceLanguageButton.setTitle(language.title, for: .normal)
+                case .target:
+                    self?.targetLanguage = language
+                    self?.targetLanguageButton.setTitle(language.title, for: .normal)
+                }
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54555BA82A41D48D00B734BE /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54555BA72A41D48D00B734BE /* Language.swift */; };
+		54EA30542A419D1500912140 /* SourceTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA30532A419D1500912140 /* SourceTextViewController.swift */; };
 		54EC08002A3EF1450060133C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC07FF2A3EF1450060133C /* AppDelegate.swift */; };
 		54EC08022A3EF1450060133C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC08012A3EF1450060133C /* SceneDelegate.swift */; };
 		54EC08042A3EF1450060133C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC08032A3EF1450060133C /* TabBarController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54555BA72A41D48D00B734BE /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		54EA30532A419D1500912140 /* SourceTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTextViewController.swift; sourceTree = "<group>"; };
 		54EC07FC2A3EF1450060133C /* Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54EC07FF2A3EF1450060133C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54EC08012A3EF1450060133C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54EA30552A419D1B00912140 /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				54EC081A2A3EF8600060133C /* TranslateViewController.swift */,
+				54EA30532A419D1500912140 /* SourceTextViewController.swift */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
 		54EC07F32A3EF1450060133C = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +82,7 @@
 				54EC08082A3EF1460060133C /* Assets.xcassets */,
 				54EC080A2A3EF1460060133C /* LaunchScreen.storyboard */,
 				54EC080D2A3EF1460060133C /* Info.plist */,
+				54555BA72A41D48D00B734BE /* Language.swift */,
 			);
 			path = Translate;
 			sourceTree = "<group>";
@@ -77,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				54EC08032A3EF1450060133C /* TabBarController.swift */,
-				54EC081A2A3EF8600060133C /* TranslateViewController.swift */,
+				54EA30552A419D1B00912140 /* Translate */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -162,6 +176,8 @@
 			files = (
 				54EC08042A3EF1450060133C /* TabBarController.swift in Sources */,
 				54EC081B2A3EF8600060133C /* TranslateViewController.swift in Sources */,
+				54EA30542A419D1500912140 /* SourceTextViewController.swift in Sources */,
+				54555BA82A41D48D00B734BE /* Language.swift in Sources */,
 				54EC08002A3EF1450060133C /* AppDelegate.swift in Sources */,
 				54EC08022A3EF1450060133C /* SceneDelegate.swift in Sources */,
 				54EC081D2A3EFDEB0060133C /* UIColor+.swift in Sources */,
