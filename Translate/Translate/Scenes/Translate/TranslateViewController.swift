@@ -8,13 +8,7 @@
 import UIKit
 import SnapKit
 
-final class TranslateViewController: UIViewController {
-    //MARK: - 버튼 source(번역 전), target(번역되는 언어)
-    enum `Type` {
-        case source
-        case target
-    }
-    
+final class TranslateViewController: UIViewController {    
     private var sourceLanguage: Language = .ko
     private var targetLanguage: Language = .en
         
@@ -63,16 +57,42 @@ final class TranslateViewController: UIViewController {
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "bookmark"), for: .normal)
-
+        button.addTarget(self, action: #selector(didTapBookmarkButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc func didTapBookmarkButton() {
+        guard
+            let sourceText = sourceLabel.text,
+            let translatedText = resultLabel.text,
+            bookmarkButton.imageView?.image == UIImage(systemName: "bookmark") //bookmark.fill == 북마크가 된 상태
+        else { return }
+        
+        bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        
+        let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks //원래 있던거 가져오기
+        let newBookmark = Bookmark(
+            sourceLanguage: sourceLanguage,
+            translatedLanguage: targetLanguage,
+            sourceText: sourceText,
+            translatedText: translatedText
+        )
+        //UserDefaults에 저장하는 타이밍
+        UserDefaults.standard.bookmarks = [newBookmark] + currentBookmarks //최신꺼가 위로와야해서 newBookmark를 먼저 씀
+        print(UserDefaults.standard.bookmarks)
+    }
     
     private lazy var copyButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
+        button.addTarget(self, action: #selector(didTapCopyButton), for: .touchUpInside)
         
         return button
     }()
+    
+    @objc func didTapCopyButton() {
+        UIPasteboard.general.string = resultLabel.text
+    }
     
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
@@ -118,6 +138,8 @@ extension TranslateViewController: SourceTextViewControllerDelegate {
         
         sourceLabel.text = sourceText
         sourceLabel.textColor = .label
+        
+        bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal) //무언가 새로 입력하고 원래 화면으로 돌아갔을 때, 북마크가 비어져있어야 함.(빨강 해제)
     }
 }
 
