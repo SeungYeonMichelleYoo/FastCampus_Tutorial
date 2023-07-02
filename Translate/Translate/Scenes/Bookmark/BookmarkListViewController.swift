@@ -21,7 +21,10 @@ final class BookmarkListViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .secondarySystemBackground
-        collectionView.register(BookmarkCollectionViewCell.self, forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
+        collectionView.register(
+            BookmarkCollectionViewCell.self,
+            forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier
+        )
         collectionView.dataSource = self
         
         return collectionView
@@ -31,6 +34,7 @@ final class BookmarkListViewController: UIViewController {
         super.viewWillAppear(animated)
         
         bookmark = UserDefaults.standard.bookmarks
+        collectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -50,15 +54,15 @@ extension BookmarkListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
+        let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BookmarkCollectionViewCell.identifier,
             for: indexPath
-        ) as? BookmarkCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.contentLabel.text = "야호"
-        cell.setup()
-        return cell
+        ) as? BookmarkCollectionViewCell
+        
+        let bookmark = bookmark[indexPath.item]
+        cell?.setup(from: bookmark)
+        
+        return cell ?? UICollectionViewCell()
     }
         
 }

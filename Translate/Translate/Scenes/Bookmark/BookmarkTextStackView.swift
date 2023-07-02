@@ -17,6 +17,7 @@ final class BookmarkTextStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13.0, weight: .medium)
         label.textColor = type.color
+        label.text = language.title
         return label
     }()
     
@@ -24,6 +25,8 @@ final class BookmarkTextStackView: UIStackView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16.0, weight: .bold)
         label.textColor = type.color
+        label.text = text
+        label.numberOfLines = 0
         return label
     }()
     
@@ -33,6 +36,7 @@ final class BookmarkTextStackView: UIStackView {
         self.type = type
         
         super.init(frame: .zero)
+        setup()
     }
     
     required init(coder: NSCoder) {
@@ -42,7 +46,6 @@ final class BookmarkTextStackView: UIStackView {
     private func setup() {
         axis = .vertical
         distribution = .equalSpacing
-        spacing = 4.0
         
         [languageLabel, textLabel].forEach { self.addArrangedSubview($0) }
     }

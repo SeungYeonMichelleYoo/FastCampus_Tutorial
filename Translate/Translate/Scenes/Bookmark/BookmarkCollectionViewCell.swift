@@ -11,8 +11,8 @@ import SnapKit
 class BookmarkCollectionViewCell: UICollectionViewCell {
     static let identifier = "BookmarkCollectionViewCell"
     
-    private var sourceBookmarkTextStackView = BookmarkTextStackView(language: .ko, text: "안녕하세요", type: .source)
-    private var targetBookmarkTextStackView = BookmarkTextStackView(language: .en, text: "hello", type: .target)
+    private var sourceBookmarkTextStackView = BookmarkTextStackView(language: Language.ko, text: "", type: .source)
+    private var targetBookmarkTextStackView = BookmarkTextStackView(language: Language.en, text: "", type: .target)
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -20,44 +20,37 @@ class BookmarkCollectionViewCell: UICollectionViewCell {
         stackView.distribution = .equalSpacing
         stackView.spacing = 16.0
         
-        [sourceBookmarkTextStackView, targetBookmarkTextStackView]
-            .forEach { stackView.addArrangedSubview($0) }
-        
+        stackView.layoutMargins = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+        stackView.isLayoutMarginsRelativeArrangement = true //stackView가 layout margin을 기준으로 정렬된 뷰를 배치(stackview 자체의 inset 설정)
+                
         return stackView
     }()
     
-    func setup() {
+    func setup(from bookmark: Bookmark) {
         backgroundColor = .systemBackground
         layer.cornerRadius = 12.0
-    }
-    
-    lazy var contentLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .black
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.cellSetting()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func cellSetting() {
-        [contentLabel].forEach {
-            contentView.addSubview($0)
-        }
         
-        contentLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(contentView)
-            make.centerY.equalToSuperview().multipliedBy(0.35)
-            make.width.equalTo(227)
-            make.height.equalTo(76)
+        sourceBookmarkTextStackView = BookmarkTextStackView(
+            language: bookmark.sourceLanguage,
+            text: bookmark.sourceText,
+            type: .source)
+        
+        targetBookmarkTextStackView = BookmarkTextStackView(
+            language: bookmark.translatedLanguage,
+            text: bookmark.translatedText,
+            type: .target)
+        
+        stackView.subviews.forEach { $0.removeFromSuperview() } //reuse 문제 때문에 추가한 코드
+        
+        [sourceBookmarkTextStackView, targetBookmarkTextStackView]
+            .forEach { stackView.addArrangedSubview($0) }
+        
+        addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(UIScreen.main.bounds.size.width - 32.0)
         }
+    
+        layoutIfNeeded()
     }
 }
