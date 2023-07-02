@@ -13,7 +13,7 @@ protocol SourceTextViewControllerDelegate: AnyObject {
 }
 
 final class SourceTextViewController: UIViewController {
-    private let placeholderText = "텍스트 입력"
+    private let placeholderText = NSLocalizedString("Enter_text", comment: "텍스트 입력")
     
     private weak var delegate: SourceTextViewControllerDelegate? //메모리 누수 발생할 수 있기 때문에 옵셔널로 처리. weak var -> 옵셔널 사용.
     
